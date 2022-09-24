@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUIDemo.Component;
 
 namespace GUIDemo
 {
@@ -16,14 +17,16 @@ namespace GUIDemo
         {
             InitializeComponent();
             this.Load += Overview_Load;
+            var p = new GradientIcon("DI", 36);
+            panelOverview.Controls.Add(p);
         }
 
         public void Overview_Load(object sender, EventArgs args)
         {
-            foreach (var control in this.GetAllControls())
-            {
-                Console.WriteLine(control.Name);
-            }
+            // foreach (var control in this.GetAllControls())
+            // {
+            //     Console.WriteLine(control.Name);
+            // }
 
         }
     }

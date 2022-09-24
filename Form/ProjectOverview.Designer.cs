@@ -34,6 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panelOverview = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,19 +84,30 @@
             this.panel4.Size = new System.Drawing.Size(33, 398);
             this.panel4.TabIndex = 2;
             // 
-            // ProjectsOverview
+            // panelOverview
+            // 
+            this.panelOverview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelOverview.Location = new System.Drawing.Point(200, 52);
+            this.panelOverview.Name = "panelOverview";
+            this.panelOverview.Size = new System.Drawing.Size(567, 398);
+            this.panelOverview.TabIndex = 3;
+            // 
+            // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelOverview);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "ProjectsOverview";
+            this.Name = "Overview";
             this.Text = "Welcome To Punkland";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Panel panelOverview;
 
         private System.Windows.Forms.Panel panel4;
 

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace GUIDemo.Component
 {
-    public class GradientPanel : Panel
+    public class GradientIcon : Label
     {
         private Brush gradientBrush;
         private EventHandler handlerGradientChanged;
@@ -20,21 +20,31 @@ namespace GUIDemo.Component
         [Browsable(true)]
         public LinearGradientMode GradientMode { get; set; }
 
-        public GradientPanel()
+        private Color GetRandomColor()
+        {
+            var rand = new Random(1);
+            return Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));
+        }
+
+        public GradientIcon(string name = "", int size = 32, bool randomColor = false)
         {
             handlerGradientChanged = new EventHandler(GradientChanged);
             ResizeRedraw = true;
+            Height = size;
+            Width = size;
+            Text = name;
+            var color = new Color();
+            StartColor = color.GetRandomColor();
+            EndColor = color.GetRandomColor();
+            TextAlign = ContentAlignment.MiddleCenter;
+            ForeColor = Color.White;
+            this.SetRound(15);
         }
 
         protected override void OnPaintBackground(System.Windows.Forms.PaintEventArgs e)
         {
             gradientBrush = new LinearGradientBrush(ClientRectangle, StartColor, EndColor, GradientMode);
             e.Graphics.FillRectangle(gradientBrush, ClientRectangle);
-        }
-
-        protected override void OnScroll(ScrollEventArgs se)
-        {
-            Invalidate();
         }
 
         private void GradientChanged(object sender, EventArgs e)

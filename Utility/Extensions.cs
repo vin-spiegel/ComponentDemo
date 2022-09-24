@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -19,6 +20,12 @@ namespace GUIDemo
         public static void SetRound(this Control control, int x, int y)
         {
             var ip = CreateRoundRectRgn(0, 0, control.Width, control.Height, x, y);
+            SetWindowRgn(control.Handle, ip, true);
+        }
+        
+        public static void SetRound(this Control control, int value)
+        {
+            var ip = CreateRoundRectRgn(0, 0, control.Width, control.Height, value, value);
             SetWindowRgn(control.Handle, ip, true);
         }
 
@@ -51,6 +58,12 @@ namespace GUIDemo
             return result.ToArray();
         }
         
+        public static Color GetRandomColor(this Color color)
+        {
+            var seed = int.Parse(DateTime.Now.ToString("ssfffff"));
+            var rand = new Random(seed);
+            return Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));;
+        }
     }
     
 }
